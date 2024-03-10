@@ -1,4 +1,4 @@
-const {add, subtract, multiply} = require('../operaciones/operaciones.js');
+const {add, subtract, multiply, division, raices, potencial} = require('../operaciones/operaciones.js');
 
 function sumar(req, res){
     const {body} = req;
@@ -27,8 +27,38 @@ function multiplicar(req, res){
     })
 }
 
+function dividir(req, res){
+    const {body} = req;
+    const {number1, number2} = body;
+    const result = division(number1, number2);
+    res.json({
+        resultado: result
+    })
+}
+
+function raiz(req, res){
+    const {body} = req;
+    const {number1, number2} = body;
+    const result = raices(number1, number2);
+    res.json({
+        resultado: result
+    })
+}
+
+function potencia(req, res){
+    const {body} = req;
+    const {number1, number2} = body;
+    const result = potencial(number1, number2);
+    res.json({
+        resultado: result
+    })
+}
+
 module.exports = {
     sumar,
     restar,
-    multiplicar
+    multiplicar,
+    dividir,
+    raiz,
+    potencia
 }
