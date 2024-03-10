@@ -17,6 +17,24 @@ function subtract(a, b){
     return number1 - number2;
 }
 
+function division(a, b){
+    let number1 = parseInt(a);
+    let number2 = parseInt(b);
+    return number1 / number2;
+}
+
+function exponente(a, b){
+    let number1 = parseInt(a);
+    let number2 = parseInt(b);
+    return Math.pow(number1 + number2, 2);
+}
+
+function raiz(a, b) {
+    let number1 = parseInt(a);
+    let number2 = parseInt(b);
+    return Math.sqrt(number1 + number2);
+}
+
 function multiply(a, b){
     let number1 = parseInt(a);
     let number2 = parseInt(b);
@@ -26,5 +44,8 @@ function multiply(a, b){
 module.exports = {
     add,
     subtract,
-    multiply
+    multiply,
+    division,
+    exponente,
+    raiz
 }
