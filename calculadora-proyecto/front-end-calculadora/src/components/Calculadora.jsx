@@ -22,6 +22,12 @@ function Calculadora(){
                 // console.log(resultado)
             })
     }
+  
+    const handleBorrar = () => {
+        setNumber1(''); 
+        setNumber2(''); 
+        borrar(); 
+    };
 
     return (
         <div className="container">
@@ -31,10 +37,13 @@ function Calculadora(){
                 <input type="text" className="number" onChange={(e)=>{setNumber2(e.target.value)}}/><br />
                 <input type="submit" className="btnEnviar" value="sumar" onClick={handleSubmit}/>
                 <input type="submit" className="btnEnviar" value="restar" onClick={handleSubmit}/>
-                <input type="submit" className="btnEnviar" value="multiplicar" onClick={handleSubmit}/>
+                <input type="submit" className="btnEnviar" value="multiplicar" onClick={handleSubmit}/><br />
+                <input type="submit" className="btnEnviar" value="dividir" onClick={handleSubmit}/>
+                <input type="submit" className="btnEnviar" value="elevar2" onClick={handleSubmit}/>
+                <input type="submit" className="btnEnviar" value="borrar" onClick={handleBorrar}/>
             </form>
             <Resultado resultado={"El resultado es "+ resultado}/>
-        </div>
+        </div>  
     )
 }
 
