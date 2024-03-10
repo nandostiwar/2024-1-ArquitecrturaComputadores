@@ -23,8 +23,28 @@ function multiply(a, b){
     return number1 * number2;
 }
 
+function division(a, b){
+    let number1 = parseInt(a);
+    let number2 = parseInt(b);
+    return number1 / number2;
+}
+
+function Squaring(a){
+    let number1 = parseInt(a);
+    return number1 * 2;
+}
+
+function squareRoot(a){
+    let number1 = parseInt(a);
+    return Math.exp(0.5 * Math.log(numero1));
+};
+
+
 module.exports = {
     add,
     subtract,
-    multiply
+    multiply,
+    division,
+    Squaring,
+    squareRoot
 }
