@@ -36,7 +36,7 @@ function Squaring(a){
 
 function squareRoot(a){
     let number1 = parseInt(a);
-    return Math.exp(0.5 * Math.log(numero1));
+    return Math.exp(0.5 * Math.log(number1));
 };
 
 
