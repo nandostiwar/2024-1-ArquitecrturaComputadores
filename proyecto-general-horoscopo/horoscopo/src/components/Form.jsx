@@ -16,6 +16,18 @@ function Form({callback}){
             callback("admin");
             goTo("/adminHome");
         }
+        fetch(`http://localhost:3500/v1/signo/login/`, {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({username, password})
+        })
+            .then(res =>res.json())
+            .then(responseData => {
+                setResultado(responseData.resultado)
+                // setResultado(responseData)
+                // console.log(resultado)
+            })
+    
     }
     return (
         <form onSubmit={validateUser}>
@@ -27,6 +39,6 @@ function Form({callback}){
             <input type="submit" value="Ingresar" id="btnEnviar"/>
         </form>
     )
-}
 
+}
 export default Form;

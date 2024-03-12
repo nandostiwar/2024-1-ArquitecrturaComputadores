@@ -15,6 +15,15 @@ const getOneSigno = async (req, res)=>{
     res.json(result)
 }
 
+const  login = async (req, res)=>{
+    const { body } = req;
+    const { user, password } = body;
+    res.json({
+        user: user, 
+        password:password
+    });
+}
+
 const updateSigno = async (req, res)=>{
     const signoEditar = req.params.signoEditar;
     const {textoEditar} = req.body;
@@ -37,5 +46,6 @@ const updateSigno = async (req, res)=>{
 module.exports = {
     getAllSignos,
     getOneSigno,
-    updateSigno
+    updateSigno,
+    login
 }
