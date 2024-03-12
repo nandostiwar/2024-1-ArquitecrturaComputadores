@@ -22,9 +22,29 @@ function multiply(a, b){
     let number2 = parseInt(b);
     return number1 * number2;
 }
+function divide(a, b){
+    let number1 = parseInt(a);
+    let number2 = parseInt(b);
+    return number1 / number2;
+}
+
+function squareRoot(a, b){
+    let number1 = parseInt(a);
+    let number2 = parseInt(b);
+    return Math.sqrt(number1 + number2);
+}    
+
+function power(a, b){
+    let number1 = parseInt(a);
+    let number2 = parseInt(b);
+    return Math.pow(number1 + number2, 2);
+}
 
 module.exports = {
     add,
     subtract,
-    multiply
+    multiply,
+    divide,
+    squareRoot,
+    power
 }
