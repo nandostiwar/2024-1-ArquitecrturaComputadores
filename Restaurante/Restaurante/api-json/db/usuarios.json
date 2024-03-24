@@ -1,0 +1,16 @@
+{
+    "usuarios": [
+      {
+        "usuario": "user",
+        "clave": "user2023",
+        "tipo": "user"
+      },
+      {
+        "usuario": "admin",
+        "clave": "admin2023",
+        "tipo": "admin"
+      }
+    ]
+  }
+  
+  
