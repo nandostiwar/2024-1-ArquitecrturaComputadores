@@ -1,61 +1,67 @@
 import { Navigate, useNavigate } from "react-router-dom";
-import './styles/AdminHome.css'
 import { useState } from "react";
 
-function AdminHome({user}){
-    if(user!=='admin' || !user){
-        return <Navigate to="/"/>
-    }
-    const home = useNavigate();
-    const [textoEditar, setTextoEditar] = useState("");
-    const [signoEditar, setSignoEditar] = useState("");
-
-    function handleSelect(event){
-        const signo = event.target.value;
-        if(signo!=="0"){
-            setSignoEditar(signo);
-        } 
+function AdminHome({ user }) {
+    if (user !== 'admin' || !user) {
+        return <Navigate to="/" />;
     }
 
-    function goHome(){
-        home("/");
+    const navigate = useNavigate();
+    const [selectedProduct, setSelectedProduct] = useState("");
+    const [newProductName, setNewProductName] = useState("");
+    const [newProductPrice, setNewProductPrice] = useState("");
+
+    const handleSelect = (event) => {
+        const product = event.target.value;
+        setSelectedProduct(product);
     }
 
-    function handleClick(e){
-        // console.log(signoEditar);
-        // console.log(textoEditar);
-        e.preventDefault();
-        fetch(`http://localhost:4000/v1/signos/${signoEditar}`, {
-            method: 'PATCH',
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({"textoEditar": textoEditar})
-        })
+    const goHome = () => {
+        navigate("/");
+    }
+
+    const handleEdit = async () => {
+        try {
+            const response = await fetch(`http://localhost:4000/v1/productos/${selectedProduct}`, {
+                method: 'PATCH',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ "nombre": newProductName, "precio": newProductPrice })
+            });
+
+            if (!response.ok) {
+                throw new Error('Error al editar el producto');
+            }
+
+            // Manejar la respuesta exitosa si es necesario
+
+        } catch (error) {
+            console.error('Error:', error.message);
+            // Manejar el error si es necesario
+        }
     }
 
     return (
-        <div class="container">
-            <h2 id="textoAdmin">Edita un Signo Zodiacal</h2>
-            <select id="editSignos" onClick={handleSelect}>
-                <option value="0">Seleciona un signo zodiacal</option>
-                <option value="Aries">Aries</option>
-                <option value="Geminis">Géminis</option>
-                <option value="Cancer">Cáncer</option>
-                <option value="Leo">Leo</option>
-                <option value="Virgo">Virgo</option>
-                <option value="Libra">Libra</option>
-                <option value="Escorpio">Escorpio</option>
-                <option value="Sagitario">Sagitario</option>
-                <option value="Capricornio">Capricornio</option>
-                <option value="Acuario">Acuario</option>
-                <option value="Piscis">Piscis</option>
+        <div className="container">
+            <h2 id="textoAdmin">Edita un Producto</h2>
+            <select id="editProductos" onChange={handleSelect}>
+                <option value="">Selecciona un producto</option>
+                <option value="Hamburguesa">Hamburguesa</option>
+                <option value="Pizza">Pizza</option>
+                <option value="Ensalada César">Ensalada César</option>
+                {/* Agrega más opciones según los productos disponibles */}
             </select>
-            <textarea id="textoEditar" cols="50" rows="10" onChange={(e)=> setTextoEditar(e.target.value)}>
-
-            </textarea>
-            <button id="btnEditar" onClick={handleClick}>Editar</button>
+            <div>
+                <label htmlFor="newProductName">Nuevo nombre del producto:</label>
+                <input type="text" id="newProductName" value={newProductName} onChange={(e) => setNewProductName(e.target.value)} />
+            </div>
+            <div>
+                <label htmlFor="newProductPrice">Nuevo precio del producto:</label>
+                <input type="number" id="newProductPrice" value={newProductPrice} onChange={(e) => setNewProductPrice(e.target.value)} />
+            </div>
+            <button id="btnEditar" onClick={handleEdit}>Editar</button>
             <button id="btnHomeAdmin" onClick={goHome}>Home</button>
         </div>
-    )
+    );
 }
 
 export default AdminHome;

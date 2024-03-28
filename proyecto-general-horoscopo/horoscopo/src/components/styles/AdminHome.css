@@ -1,46 +1,55 @@
-.container{
-    height: 300px;
-    display: grid;
-    place-items: center;
-}
-
-#editSignos{
-    margin-top: 0px;
-    margin: 100px;
-    width: 400px;
-    padding: 5px 50px 5px 10px;
-    border-radius: 10px;
-    background-color: rgb(71, 63, 63);
-    color: white;
-}
-
-#btnEditar{
-    margin-top: 10%;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 10px;
-    background-color: brown;
-    color: white;
-}
-
-#textoAdmin{
-    font-style: italic;
-}
-
-#textoEditar{
-    border-radius: 10px;
+/* Estilos generales */
+.container {
+    height: 100vh; /* Usamos la altura completa de la ventana */
     display: flex;
-    background-color: rgb(95, 82, 82);
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Color de fondo de la página */
+}
+
+/* Estilos para el formulario de edición de signos */
+#editSignos {
+    width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #4f4f4f; /* Color de fondo del formulario */
+    color: white;
+    text-align: center; /* Centramos el contenido */
+}
+
+/* Estilos para el botón de edición */
+#btnEditar {
+    margin-top: 20px; /* Espacio entre el formulario y el botón */
+    padding: 10px 20px; /* Añadimos espacio alrededor del texto */
+    border: none; /* Quitamos el borde */
+    border-radius: 5px;
+    background-color: #8b4513; /* Color de fondo del botón */
+    color: white;
+    cursor: pointer; /* Cambiamos el cursor al pasar sobre el botón */
+}
+
+/* Estilos para el texto del administrador */
+#textoAdmin {
+    font-style: italic;
+    margin-bottom: 10px; /* Espacio debajo del texto */
+}
+
+/* Estilos para el área de texto de edición */
+#textoEditar {
+    margin-top: 20px; /* Espacio entre el botón y el área de texto */
+    border-radius: 10px;
+    padding: 10px; /* Añadimos espacio alrededor del área de texto */
+    background-color: #5f5252; /* Color de fondo del área de texto */
     color: white;
 }
 
-#btnHomeAdmin{
-    margin-top: 15px;
-    padding: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    border-radius: 10px;
-    background-color: blue;
-    color: white
+/* Estilos para el botón de regresar a la página de administrador */
+#btnHomeAdmin {
+    margin-top: 20px; /* Espacio entre el área de texto y el botón */
+    padding: 10px 20px; /* Añadimos espacio alrededor del texto */
+    border: none; /* Quitamos el borde */
+    border-radius: 5px;
+    background-color: #4169e1; /* Color de fondo del botón */
+    color: white;
+    cursor: pointer; /* Cambiamos el cursor al pasar sobre el botón */
 }

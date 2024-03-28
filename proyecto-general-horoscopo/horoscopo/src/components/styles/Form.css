@@ -1,34 +1,39 @@
-body{
-    justify-content: center;
-    text-align: center;
+/* Estilos generales */
+body {
+    display: flex;
+    justify-content: center; /* Centramos horizontalmente */
+    align-items: center; /* Centramos verticalmente */
+    text-align: center; /* Alineamos el texto al centro */
+    background-color: #f0f0f0; /* Color de fondo */
 }
 
-.entry{
+/* Estilos para la entrada */
+.entry {
     border-radius: 10px;
     padding: 10px 20px 10px 35px;
+    background-color: #4f4f4f; /* Color de fondo */
+    color: white; /* Color del texto */
 }
 
-form{
+/* Estilos para el formulario */
+form {
     padding: 20px;
     padding-top: 10%;
 }
 
-#btnEnviar{
+/* Estilos para el botón de enviar */
+#btnEnviar {
     margin-top: 20px;
-    background-color: rgb(48, 27, 238);
-    padding: 5px;
-    padding-left: 35px;
-    padding-right: 35px;
+    background-color: #301bec; /* Color de fondo del botón */
+    padding: 5px 20px; /* Espacio alrededor del texto */
     border-radius: 15px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: white;
+    cursor: pointer; /* Cambio de cursor al pasar sobre el botón */
 }
 
-.txt{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-#txtBienvenida{
+/* Estilos para el texto de bienvenida */
+#txtBienvenida {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-style: oblique;
     color: white;

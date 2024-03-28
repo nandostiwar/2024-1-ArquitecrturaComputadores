@@ -1,6 +1,9 @@
 const express = require('express');
 const {urlencoded, json} = require('express');
+console.log("Ruta absoluta de signos.routes.js:", __dirname + '/routes/signos.routesjs');
+
 const router = require('./routes/signos.routes.js');
+
 const cors = require('cors');
 
 const app = express();

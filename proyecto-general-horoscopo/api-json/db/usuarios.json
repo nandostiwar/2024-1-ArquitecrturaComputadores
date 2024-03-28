@@ -1,0 +1,21 @@
+{
+    "usuarios": [
+      {
+        "id": 1,
+        "nombre": "Admin",
+        "rol": "administrador"
+      },
+      {
+        "id": 2,
+        "nombre": "Mesero1",
+        "rol": "mesero"
+      },
+      {
+        "id": 3,
+        "nombre": "Cocina1",
+        "rol": "cocina"
+      }
+      
+    ]
+  }
+  

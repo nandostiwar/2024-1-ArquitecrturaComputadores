@@ -1,69 +1,117 @@
 const fs = require('fs/promises');
 const path = require('path');
 
-const signosFilePath = path.join(__dirname, '../../db/signos.json');
+const productosFilePath = path.join(__dirname, '../../db/productos.json');
 
-const getAllSignos = async (req, res) => {
+const getAllProductos = async (req, res) => {
     try {
-        const signosData = await fs.readFile(signosFilePath);
-        const signosJson = JSON.parse(signosData);
-        res.json(signosJson);
+        const productosData = await fs.readFile(productosFilePath);
+        const productosJson = JSON.parse(productosData);
+        res.json(productosJson);
     } catch (error) {
-        console.error("Error al obtener todos los signos:", error);
+        console.error("Error al obtener todos los productos:", error);
         res.status(500).json({ message: "Error interno del servidor" });
     }
 };
 
-const getOneSigno = async (req, res) => {
-    const oneSigno = req.params.signo;
+const getOneProducto = async (req, res) => {
+    const idProducto = parseInt(req.params.idProducto);
     try {
-        const signosData = await fs.readFile(signosFilePath);
-        const signosJson = JSON.parse(signosData);
-        const result = signosJson[oneSigno];
+        const productosData = await fs.readFile(productosFilePath);
+        const productosJson = JSON.parse(productosData);
+        const producto = productosJson.productos.find(producto => producto.id === idProducto);
         
-        if (result) {
-            res.json(result);
+        if (producto) {
+            res.json(producto);
         } else {
-            res.status(404).json({ message: "Signo no encontrado" });
+            res.status(404).json({ message: "Producto no encontrado" });
         }
     } catch (error) {
-        console.error("Error al obtener un solo signo:", error);
+        console.error("Error al obtener un solo producto:", error);
         res.status(500).json({ message: "Error interno del servidor" });
     }
 };
 
-const login = async (req, res) => {
-    const { user, password } = req.body;
-    res.json({
-        user: user,
-        password: password
-    });
-};
-
-const updateSigno = async (req, res) => {
-    const signoEditar = req.params.signoEditar;
-    const { textoEditar } = req.body;
+const createProducto = async (req, res) => {
+    const { nombre, precio } = req.body;
 
     try {
-        const signosData = await fs.readFile(signosFilePath);
-        const signosJson = JSON.parse(signosData);
+        const productosData = await fs.readFile(productosFilePath);
+        const productosJson = JSON.parse(productosData);
 
-        if (signosJson.hasOwnProperty(signoEditar)) {
-            signosJson[signoEditar] = textoEditar;
-            await fs.writeFile(signosFilePath, JSON.stringify(signosJson, null, 2), { encoding: 'utf-8' });
-            res.json({ message: "Signo actualizado" });
+        const nuevoProducto = {
+            id: productosJson.productos.length + 1,
+            nombre,
+            precio
+        };
+
+        productosJson.productos.push(nuevoProducto);
+
+        await fs.writeFile(productosFilePath, JSON.stringify(productosJson, null, 2), { encoding: 'utf-8' });
+        
+        res.status(201).json({ message: "Producto creado", producto: nuevoProducto });
+    } catch (error) {
+        console.error("Error al crear un producto:", error);
+        res.status(500).json({ message: "Error interno del servidor" });
+    }
+};
+
+const updateProducto = async (req, res) => {
+    const idProducto = parseInt(req.params.idProducto);
+    const { nombre, precio } = req.body;
+
+    try {
+        const productosData = await fs.readFile(productosFilePath);
+        const productosJson = JSON.parse(productosData);
+
+        const index = productosJson.productos.findIndex(producto => producto.id === idProducto);
+
+        if (index !== -1) {
+            productosJson.productos[index].nombre = nombre;
+            productosJson.productos[index].precio = precio;
+
+            await fs.writeFile(productosFilePath, JSON.stringify(productosJson, null, 2), { encoding: 'utf-8' });
+            
+            res.json({ message: "Producto actualizado" });
         } else {
-            res.status(404).json({ message: "Signo no encontrado" });
+            res.status(404).json({ message: "Producto no encontrado" });
         }
     } catch (error) {
-        console.error("Error al actualizar el signo:", error);
+        console.error("Error al actualizar un producto:", error);
+        res.status(500).json({ message: "Error interno del servidor" });
+    }
+};
+
+const deleteProducto = async (req, res) => {
+    const idProducto = parseInt(req.params.idProducto);
+
+    try {
+        const productosData = await fs.readFile(productosFilePath);
+        const productosJson = JSON.parse(productosData);
+
+        const index = productosJson.productos.findIndex(producto => producto.id === idProducto);
+
+        if (index !== -1) {
+            productosJson.productos.splice(index, 1);
+
+            await fs.writeFile(productosFilePath, JSON.stringify(productosJson, null, 2), { encoding: 'utf-8' });
+            
+            res.json({ message: "Producto eliminado" });
+        } else {
+            res.status(404).json({ message: "Producto no encontrado" });
+        }
+    } catch (error) {
+        console.error("Error al eliminar un producto:", error);
         res.status(500).json({ message: "Error interno del servidor" });
     }
 };
 
 module.exports = {
-    getAllSignos,
-    getOneSigno,
-    updateSigno,
-    login
+    getAllProductos,
+    getOneProducto,
+    createProducto,
+    updateProducto,
+    deleteProducto
 };
+
+

@@ -1,32 +1,35 @@
-.container{
-    height: 300px;
+/* Estilos generales */
+.container {
+    height: 100vh; /* Utilizamos la altura completa de la ventana */
     display: grid;
-    place-items: center;
+    place-items: center; /* Centramos el contenido */
 }
 
-#selectSignos{
-    margin-top: 0px;
-    margin: 100px;
+/* Estilos para el selector de signos */
+#selectSignos {
+    margin: 100px; /* Margen externo */
     width: 400px;
-    padding: 5px 50px 5px 10px;
+    padding: 10px; /* Añadimos espacio alrededor del contenido */
     border-radius: 10px;
-    background-color: rgb(71, 63, 63);
-    color: white;
+    background-color: #473f3f; /* Color de fondo */
+    color: white; /* Color del texto */
 }
 
-#txtSeleccionPage{
+/* Estilos para el texto de selección de página */
+#txtSeleccionPage {
     padding: 50px;
-    padding-bottom: 0px;
+    padding-bottom: 0px; /* Eliminamos el espacio debajo del texto */
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-style: italic  ;
+    font-style: italic;
 }
 
-#btnHome{
-    margin-top: 100px;
-    background-color: blue;
-    color: white;
-    padding: 50px;
-    padding-bottom: 5px;
-    padding-top: 5px;
+/* Estilos para el botón de regresar a la página principal */
+#btnHome {
+    margin-top: 20px; /* Margen superior */
+    padding: 10px 20px; /* Añadimos espacio alrededor del texto */
+    background-color: blue; /* Color de fondo del botón */
+    color: white; /* Color del texto */
+    border: none; /* Quitamos el borde */
     border-radius: 10px;
+    cursor: pointer; /* Cambiamos el cursor al pasar sobre el botón */
 }
